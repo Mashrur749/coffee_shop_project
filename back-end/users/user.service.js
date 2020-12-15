@@ -19,7 +19,7 @@ async function authenticate({ username, password }) {
         throw 'Username or password is incorrect';
 
     // authentication successful
-    const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '7d' });
+    const token = jwt.sign({ uid: user.id }, config.secret, { expiresIn: '7d' });
     return { ...omitHash(user.get()), token };
 }
 
