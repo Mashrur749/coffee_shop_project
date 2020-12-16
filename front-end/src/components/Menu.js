@@ -81,25 +81,36 @@ export default function Menu() {
     }
 
     function handleAddOrder(){
-        // axios.post('http://localhost:4000/order/add', {
-        //     itemname: newMenuItem,
-        //     category,
-        //     price: parseFloat(price)
-        // }, {
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
-        // .then(response => { 
-        //     console.log("success")
-        //     resetMenu()
-        //     alert("Item Added")
 
-        // })
-        // .catch(err => {
-        //     console.log(err)
-        //     console.log(err.response.data.message)
-        // });
+        let itemIds = "";
+        let username = userInfo.username;
+        cart.forEach(e => {
+            console.log(e)
+            itemIds = itemIds + e.id + ",";
+        })
+
+        itemIds = itemIds.substring(0, itemIds.length - 1);
+
+        axios.post('http://localhost:4000/order/add', {
+            itemIds,
+            username,
+            totalCost
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${userInfo.token}`
+            }
+        })
+        .then(response => { 
+            console.log("success")
+            resetMenu()
+            alert("Item Added")
+
+        })
+        .catch(err => {
+            console.log(err)
+            console.log(err.response.data.message)
+        });
     }
 
 
