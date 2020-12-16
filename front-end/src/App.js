@@ -4,10 +4,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from "./components/Login.js"
 import Register from "./components/Register"
 import NotFound from "./components/NotFound"
+import NavBar from "./components/NavBar"
 
 function App() {
   return (
-    <div className="App">  
+    <div className="App">
+      <NavBar/> 
       <BrowserRouter>
         <Switch>
           <Route path="/" render={() => <div>Main Page</div>} exact/>
