@@ -21,6 +21,8 @@ export default function Menu() {
     useEffect(() => {
         resetMenu();
         setUserInfo(JSON.parse(localStorage.getItem("userInfo")))
+        setCart(JSON.parse(localStorage.getItem("cart")))
+        setTotalCost(JSON.parse(localStorage.getItem("totalCost")))
     }, []);
 
     useEffect(() => {
@@ -68,7 +70,12 @@ export default function Menu() {
             itemname: input.dataset.itemName
         }
         setCart(prevCart => [...prevCart, item])
-        setTotalCost(prevState => prevState + (item.price*item.amount))
+        setTotalCost(prevState => {
+            let newTotalCost = prevState + (item.price*item.amount);
+            localStorage.setItem("totalCost", newTotalCost);
+            return newTotalCost;
+        })
+        
 
 
     }
@@ -149,7 +156,7 @@ export default function Menu() {
                             ))}
                         </ListGroup>
                     </Col>
-                    {cart.length > 0 && <Col>
+                    {cart && cart.length > 0 && <Col>
                         <ListGroup align="left">
                             {cart.map((item, idx) => (
                                 <ListGroup.Item key={idx}> 
