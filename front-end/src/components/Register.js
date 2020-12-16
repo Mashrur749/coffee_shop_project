@@ -1,33 +1,47 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+import Button from 'react-bootstrap/Button'
+import axios from 'axios'
 
 
 
 
 const Register = () => {
+
+    let [username, setUsername] = useState("");
+    let [password, setPassword] = useState("");
+    let [type, setType] = useState("Customer");
+
+
+    function handleSubmit(e){
+        e.preventDefault();
+        //send api request
+        console.log(username)
+        console.log(password)
+        console.log(type)
+    }
+
     return (
         <div>
             <h1> Register </h1>
             <br/>
             <Row className="justify-content-md-center">
-                <Form>
+                <Form onSubmit={handleSubmit}>
                 
                     <Form.Group as={Row} controlId="formPlaintextEmail">
                     <Form.Label column sm="2">
                         Username
                     </Form.Label>
-                    <Col sm="8">
-                        <Form.Control placeholder="Username" />
+                    <Col sm="6">
+                        <Form.Control onChange={(e) => {setUsername(e.target.value)}} placeholder="Username" />
                     </Col>
-                    <Col sm="1">
-                        <DropdownButton id="dropdown-basic-button" title="Account Type">
-                            <Dropdown.Item value="1">Employee</Dropdown.Item>
-                            <Dropdown.Item value="2">Customer</Dropdown.Item>
-                        </DropdownButton>
+                    <Col sm="4">
+                        <Form.Control onChange={(e) => {setType(e.target.value)}} as="select">
+                            <option value="Customer">Customer</option>
+                            <option value="Employee">Employee</option>
+                        </Form.Control>
                     </Col>
                     </Form.Group>
                 
@@ -35,11 +49,11 @@ const Register = () => {
                     <Form.Label column sm="2">
                         Password
                     </Form.Label>
-                    <Col sm="8">
-                        <Form.Control type="password" placeholder="Password" />
+                    <Col sm="10">
+                        <Form.Control onChange={(e) => {setPassword(e.target.value)}} type="password" placeholder="Password" />
                     </Col>
                     </Form.Group>
-
+                    <Button type="submit"> Sign Up </Button>
                 </Form>
             </Row>
         </div>

@@ -11,12 +11,12 @@ const NavBar = () => {
         <div>
             <>
                 <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand href="/">
                         My Coffee Shop
                     </Navbar.Brand>
                     <Nav className="mr-auto">
                     </Nav>
-                    <Nav inline>
+                    <Nav inline="true">
                         <Nav.Link href="/login">Login</Nav.Link>
                         <Nav.Link href="/register">Register</Nav.Link>
                     </Nav>
