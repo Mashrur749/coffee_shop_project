@@ -6,6 +6,7 @@ function model(sequelize) {
     const attributes = {
         itemname: { type: DataTypes.STRING, allowNull: false },
         category: { type: DataTypes.STRING, allowNull: false },
+        price: { type: DataTypes.DOUBLE, allowNull: false },
     };
 
     const options = {

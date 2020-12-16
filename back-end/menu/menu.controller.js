@@ -16,7 +16,8 @@ module.exports = router;
 function itemSchema(req, res, next) {
     const schema = Joi.object({
         itemname: Joi.string().required(),
-        category: Joi.string().required()
+        category: Joi.string().required(),
+        price: Joi.number().required()
     });
     validateRequest(req, next, schema);
 }
