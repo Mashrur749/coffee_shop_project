@@ -69,7 +69,13 @@ export default function Menu() {
             price: input.dataset.itemPrice,
             itemname: input.dataset.itemName
         }
-        setCart(prevCart => [...prevCart, item])
+        setCart(prevCart => {
+            if(prevCart){
+                return [...prevCart, item]
+            } else{
+                return [item];
+            }
+        })
         setTotalCost(prevState => {
             let newTotalCost = prevState + (item.price*item.amount);
             localStorage.setItem("totalCost", newTotalCost);
