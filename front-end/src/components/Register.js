@@ -3,12 +3,17 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import { useHistory } from "react-router-dom";
 import axios from 'axios'
 
 
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 
-const Register = () => {
+
+const Register = (props) => {
+    
+    const history = useHistory();
 
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
@@ -21,6 +26,28 @@ const Register = () => {
         console.log(username)
         console.log(password)
         console.log(type)
+        
+        axios.post('http://localhost:4000/users/register', {
+            firstName: 'firstname',
+            lastName: 'lastname',
+            username,
+            password,
+            type
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => { 
+            console.log("success")
+            alert("User registered")
+            history.push("/login")
+
+        })
+        .catch(error => {
+            alert(error.response.data.message);
+            console.log(error.response.data.message)
+        });
     }
 
     return (

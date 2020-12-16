@@ -1,12 +1,20 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import { useHistory } from "react-router-dom";
 
-import FormControl from 'react-bootstrap/FormControl'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+
 
 const NavBar = () => {
+    
+    const history = useHistory();
+
+    function logout(){
+        localStorage.removeItem("userInfo");
+        history.push("/login")
+
+    }
+
     return (
         <div>
             <>
@@ -19,6 +27,8 @@ const NavBar = () => {
                     <Nav inline="true">
                         <Nav.Link href="/login">Login</Nav.Link>
                         <Nav.Link href="/register">Register</Nav.Link>
+                        <Nav.Link href="/orders">Orders</Nav.Link>
+                        <Nav.Link onClick={logout}>Logout</Nav.Link>
                     </Nav>
                 </Navbar>
             </>
