@@ -10,15 +10,15 @@ import Menu from "./components/Menu"
 function App() {
   return (
     <div className="App">
-    <BrowserRouter>
-      <NavBar/> 
-        <Switch>
-          <Route path="/" component={Menu} exact/>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </BrowserRouter>
+      <BrowserRouter>
+          <NavBar/> 
+          <Switch>
+            <Route path="/" component={Menu} exact/>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </BrowserRouter>
     </div>
   );
 }

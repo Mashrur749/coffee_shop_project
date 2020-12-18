@@ -11,9 +11,11 @@ import axios from 'axios';
 export default function Menu() {
 
     const [menu, setMenu] = useState([]);
+    
     const [category, setCategory] = useState("Tea");
     const [newMenuItem, setNewMenuItem] = useState("");
     const [price, setPrice] = useState(0);
+
     const [cart, setCart] = useState([]);
     const [userInfo, setUserInfo] = useState(null);
     const [totalCost, setTotalCost] = useState(0)
@@ -127,7 +129,9 @@ export default function Menu() {
                 <div>
                     <form onSubmit={handleAddItem}>
                         <Container fluid="md">
-                            <h4>Add Menu Item:</h4> 
+                            <Col sm="4" align="left">
+                                <h4>Add Menu Item:</h4> 
+                            </Col>
                             <Row>
                                 <Col sm="2" align="left">
                                     <input  type="text" value={newMenuItem} onChange={e => setNewMenuItem(e.target.value)} placeholder="Item Name" required/>
@@ -157,7 +161,7 @@ export default function Menu() {
                 <Row>
                     <Col>
                         <ListGroup align="left">
-                            {menu.map(item => (
+                            {menu && menu.map(item => (
                                     <ListGroup.Item key={item.id}> 
                                         Item Name: {item.itemname} <br/>
                                         Category: {item.category}   <br/>

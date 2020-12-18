@@ -12,7 +12,6 @@ const NavBar = () => {
     function logout(){
         localStorage.removeItem("userInfo");
         history.push("/login")
-
     }
 
     return (
