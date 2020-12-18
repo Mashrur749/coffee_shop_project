@@ -8,6 +8,7 @@ const menuService = require('./menu.service');
 router.post('/add', itemSchema, addItem);
 router.get('/', getAll);
 router.get('/:id', getById);
+router.post('/:id', itemSchema, update);
 
 module.exports = router;
 

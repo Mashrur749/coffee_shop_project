@@ -6,9 +6,9 @@ const orderService = require('./order.service');
 const authorize = require('_middleware/authorize')
 
 // routes
-router.post('/add', authorize(), itemSchema, addItem);
-router.get('/', authorize(), getAll);
-router.get('/:username', authorize(), getByUsername);
+router.post('/add', itemSchema, addItem);
+router.get('/', getAll);
+router.get('/:username', getByUsername);
 router.put('/:id', authorize(), update);
 router.delete('/:id', authorize(), _delete);
 
