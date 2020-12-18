@@ -16,7 +16,7 @@ async function getAll() {
 }
 
 async function getById(id) {
-    return await getMenu(id);
+    return await getMenuItem(id);
 }
 
 async function create(params) {
